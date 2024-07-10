@@ -1,5 +1,18 @@
 #!/bin/bash
 
+# 检查系统类型并安装必要的工具
+if [ -f /etc/debian_version ]; then
+    # Debian-based system (Ubuntu, Debian)
+    sudo apt-get update
+    sudo apt-get install -y tar curl
+elif [ -f /etc/redhat-release ]; then
+    # Red Hat-based system (CentOS, Fedora)
+    sudo yum install -y tar curl
+else
+    echo "Unsupported Linux distribution."
+    exit 1
+fi
+
 # 设置变量
 INSTALL_DIR="/etc/frp"
 FRPC_BIN="frpc"
