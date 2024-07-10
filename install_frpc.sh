@@ -50,6 +50,11 @@ tar -xzvf /tmp/$ARCHIVE_NAME -C /tmp
 
 # 查找解压后的目录
 FRP_DIR=$(find /tmp -type d -name "frp_*_linux_$ARCH")
+echo "Extracted to directory: $FRP_DIR"
+
+# 检查解压后的目录内容
+echo "Contents of extracted directory:"
+ls -l $FRP_DIR
 
 # 检查是否已经安装了frpc
 if [ -f "$INSTALL_DIR/$FRPC_BIN" ]; then
